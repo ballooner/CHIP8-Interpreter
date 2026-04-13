@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o -o chip8_interpreter  -Wl,-rpath,/home/jace/repos/CHIP8-Interpreter/build libSDL3.so.0.5.0 
