@@ -169,29 +169,29 @@ SDL_uclibc/fast:
 	$(MAKE) $(MAKESILENT) -f vendored/SDL/CMakeFiles/SDL_uclibc.dir/build.make vendored/SDL/CMakeFiles/SDL_uclibc.dir/build
 .PHONY : SDL_uclibc/fast
 
-01-snake/snake.o: 01-snake/snake.c.o
-.PHONY : 01-snake/snake.o
+src/main.o: src/main.c.o
+.PHONY : src/main.o
 
 # target to build an object file
-01-snake/snake.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chip8_interpreter.dir/build.make CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o
-.PHONY : 01-snake/snake.c.o
+src/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chip8_interpreter.dir/build.make CMakeFiles/chip8_interpreter.dir/src/main.c.o
+.PHONY : src/main.c.o
 
-01-snake/snake.i: 01-snake/snake.c.i
-.PHONY : 01-snake/snake.i
+src/main.i: src/main.c.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-01-snake/snake.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chip8_interpreter.dir/build.make CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.i
-.PHONY : 01-snake/snake.c.i
+src/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chip8_interpreter.dir/build.make CMakeFiles/chip8_interpreter.dir/src/main.c.i
+.PHONY : src/main.c.i
 
-01-snake/snake.s: 01-snake/snake.c.s
-.PHONY : 01-snake/snake.s
+src/main.s: src/main.c.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-01-snake/snake.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/chip8_interpreter.dir/build.make CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.s
-.PHONY : 01-snake/snake.c.s
+src/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chip8_interpreter.dir/build.make CMakeFiles/chip8_interpreter.dir/src/main.c.s
+.PHONY : src/main.c.s
 
 # Help Target
 help:
@@ -205,9 +205,9 @@ help:
 	@echo "... SDL3_test"
 	@echo "... SDL_uclibc"
 	@echo "... chip8_interpreter"
-	@echo "... 01-snake/snake.o"
-	@echo "... 01-snake/snake.i"
-	@echo "... 01-snake/snake.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

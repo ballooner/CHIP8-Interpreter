@@ -69,28 +69,28 @@ include CMakeFiles/chip8_interpreter.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/chip8_interpreter.dir/flags.make
 
-CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o: CMakeFiles/chip8_interpreter.dir/flags.make
-CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o: ../01-snake/snake.c
-CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o: CMakeFiles/chip8_interpreter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jace/repos/CHIP8-Interpreter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o -MF CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o.d -o CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o -c /home/jace/repos/CHIP8-Interpreter/01-snake/snake.c
+CMakeFiles/chip8_interpreter.dir/src/main.c.o: CMakeFiles/chip8_interpreter.dir/flags.make
+CMakeFiles/chip8_interpreter.dir/src/main.c.o: ../src/main.c
+CMakeFiles/chip8_interpreter.dir/src/main.c.o: CMakeFiles/chip8_interpreter.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jace/repos/CHIP8-Interpreter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/chip8_interpreter.dir/src/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/chip8_interpreter.dir/src/main.c.o -MF CMakeFiles/chip8_interpreter.dir/src/main.c.o.d -o CMakeFiles/chip8_interpreter.dir/src/main.c.o -c /home/jace/repos/CHIP8-Interpreter/src/main.c
 
-CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jace/repos/CHIP8-Interpreter/01-snake/snake.c > CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.i
+CMakeFiles/chip8_interpreter.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/chip8_interpreter.dir/src/main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jace/repos/CHIP8-Interpreter/src/main.c > CMakeFiles/chip8_interpreter.dir/src/main.c.i
 
-CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jace/repos/CHIP8-Interpreter/01-snake/snake.c -o CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.s
+CMakeFiles/chip8_interpreter.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/chip8_interpreter.dir/src/main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jace/repos/CHIP8-Interpreter/src/main.c -o CMakeFiles/chip8_interpreter.dir/src/main.c.s
 
 # Object files for target chip8_interpreter
 chip8_interpreter_OBJECTS = \
-"CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o"
+"CMakeFiles/chip8_interpreter.dir/src/main.c.o"
 
 # External object files for target chip8_interpreter
 chip8_interpreter_EXTERNAL_OBJECTS =
 
-chip8_interpreter: CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o
+chip8_interpreter: CMakeFiles/chip8_interpreter.dir/src/main.c.o
 chip8_interpreter: CMakeFiles/chip8_interpreter.dir/build.make
 chip8_interpreter: libSDL3.so.0.5.0
 chip8_interpreter: ../vendored/SDL/src/dynapi/SDL_dynapi.sym

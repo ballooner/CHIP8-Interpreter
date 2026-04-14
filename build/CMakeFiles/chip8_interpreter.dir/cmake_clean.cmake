@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o"
-  "CMakeFiles/chip8_interpreter.dir/01-snake/snake.c.o.d"
+  "CMakeFiles/chip8_interpreter.dir/src/main.c.o"
+  "CMakeFiles/chip8_interpreter.dir/src/main.c.o.d"
   "chip8_interpreter"
   "chip8_interpreter.pdb"
 )
