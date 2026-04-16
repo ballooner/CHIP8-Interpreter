@@ -1,4 +1,4 @@
-# Install script for directory: /home/jace/repos/CHIP8-Interpreter/vendored/SDL
+# Install script for directory: /home/balloon/repos/CHIP8-Interpreter/vendored/SDL
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

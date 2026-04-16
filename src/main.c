@@ -3,15 +3,18 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-#define CHIP8_WIDTH 	64
-#define CHIP8_HEIGHT 	32
+#define WINDOW_WIDTH 	512
+#define WINDOW_HEIGHT 	256
+#define PIXEL_WIDTH 	(WINDOW_WIDTH / 64)
+#define PIXEL_HEIGHT	(WINDOW_HEIGHT / 64)
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char* argv[])
 {
-	if (!SDL_CreateWindowAndRenderer("Hello World", CHIP8_WIDTH, CHIP8_HEIGHT, NULL, &window, &renderer))
+	if (!SDL_CreateWindowAndRenderer("Hello World", WINDOW_WIDTH, WINDOW_HEIGHT,
+			   					    	NULL, &window, &renderer))
 	{
 		SDL_Log("Couldn't create window and renderer: %s", SDL_GetError());
 		return SDL_APP_FAILURE;
