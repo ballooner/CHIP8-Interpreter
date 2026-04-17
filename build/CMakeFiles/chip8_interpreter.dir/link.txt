@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/chip8_interpreter.dir/src/main.c.o -o chip8_interpreter  -Wl,-rpath,/home/balloon/repos/CHIP8-Interpreter/build libSDL3.so.0.5.0 
