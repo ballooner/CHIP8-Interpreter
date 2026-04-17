@@ -1,9 +1,12 @@
 #include <stdint.h>
 
-#define FONT_START 	0x050
-#define FONT_END	0x09F
+#define FONT_START 			0x050
+#define FONT_END			0x09F
+#define INSTRUCTION_START	0x200
 
-static uint8_t memory[4096];
+static int8_t memory[4096];
+static int16_t stack[16];
+uint8_t stackPointer = 0;
 
 // Load the font starting at FONT_START and ending at FONT_END
 void load_font(void)
@@ -34,4 +37,28 @@ void load_font(void)
 		memory[i] = font_array[i - FONT_START];
 		i++;
 	}
+}
+
+// Push a value to the stack
+// Return true if successfull and false otherwise
+int8_t stackPush(uint16_t value)
+{
+	if (stackPointer < 15)
+	{
+		stack[stackPointer++] = value;
+		return true;
+	}
+	
+	return false;
+}
+
+// Pop and return a value from the stack
+int16_t stackPop(void)
+{
+	if (stackPointer > 0)
+	{
+		return stack[stackPointer--];
+	}
+
+	return stackPointer;
 }
