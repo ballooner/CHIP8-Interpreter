@@ -1,12 +1,34 @@
 #include <stdint.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
 
+// CHIP8 DEFINES
 #define FONT_START 			0x050
 #define FONT_END			0x09F
 #define INSTRUCTION_START	0x200
 
+// SDL DEFINES
+#define WINDOW_WIDTH 	512
+#define WINDOW_HEIGHT 	256
+#define PIXEL_WIDTH 	(WINDOW_WIDTH / 64)
+#define PIXEL_HEIGHT	(WINDOW_HEIGHT / 64)
+
+// CHIP8 VARIABLES
 static int8_t memory[4096];
 static int16_t stack[16];
+static uint8_t display[64][32];
 uint8_t stackPointer = 0;
+
+// SDL VARIABLES
+static SDL_Window *window = NULL;
+static SDL_Renderer *renderer = NULL;
+
+// Initialize everything needed for the emulator and start it
+void initEmulator(void)
+{
+	load_font();
+
+}
 
 // Load the font starting at FONT_START and ending at FONT_END
 void load_font(void)
@@ -62,3 +84,5 @@ int16_t stackPop(void)
 
 	return stackPointer;
 }
+
+// SDL FUNCTIONS
