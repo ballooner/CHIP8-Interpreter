@@ -2,11 +2,13 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <chip8.h>
 
 #define WINDOW_WIDTH 	512
 #define WINDOW_HEIGHT 	256
 #define PIXEL_WIDTH 	(WINDOW_WIDTH / 64)
 #define PIXEL_HEIGHT	(WINDOW_HEIGHT / 64)
+#define FRAME_RATE		60
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
@@ -19,6 +21,14 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char* argv[])
 		SDL_Log("Couldn't create window and renderer: %s", SDL_GetError());
 		return SDL_APP_FAILURE;
 	}
+	// Set the rate SDL_AppIterate gets called to 60
+	if (!SDL_SetHint(SDL_HINT_MAIN_CALLBACK_RATE, FRAME_RATE))
+	{
+		SDL_Log("Couldn't set callback rate: %s", SDL_GetError());
+	   	return SDL_APP_FAILURE;
+	}
+	init_emulator();
+
 	return SDL_APP_CONTINUE;
 }
 
@@ -34,23 +44,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
-    const char *message = "Hello World!";
-    int w = 0, h = 0;
-    float x, y;
-    const float scale = 4.0f;
-
-    /* Center the message and scale it up */
-    SDL_GetRenderOutputSize(renderer, &w, &h);
-    SDL_SetRenderScale(renderer, scale, scale);
-    x = ((w / scale) - SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE * SDL_strlen(message)) / 2;
-    y = ((h / scale) - SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE) / 2;
-
-    /* Draw the message */
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderDebugText(renderer, x, y, message);
-    SDL_RenderPresent(renderer);
+	
 
     return SDL_APP_CONTINUE;
 }
