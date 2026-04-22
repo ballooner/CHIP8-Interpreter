@@ -4,10 +4,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define FONT_START			0x050
-#define FONT_END 			0x09F
-#define INSTRUCTION_START	0x200
-
 // Initialize everything needed for the emulator and start it
 // Provide the path of the ROM you want to execute
 // Return 0 on success and -1 on failure
@@ -15,7 +11,7 @@ int initEmulator(char* romPath);
 // Read the instructions from the romFile pointer into memory
 // starting at INSTRUCTION_START.
 // Return 0 on success and -1 on failure
-int loadProgram(FILE* romFile);
+int loadProgram(char* romPath);
 // Load the font starting at FONT_START and ending at FONT_END
 // Return 0 on success and -1 on failure
 void loadFont(void);
