@@ -9,8 +9,12 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 # This assumes the SDL source is available in vendored/SDL
 add_subdirectory(vendored/SDL EXCLUDE_FROM_ALL)
 
+# Add my chip8 code
+add_library(chip8 src/chip8.c)
+target_include_directories(chip8 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
 # Create your game executable target as usual
 add_executable(chip8_interpreter WIN32 src/main.c)
 
 # Link to the actual SDL3 library.
-target_link_libraries(chip8_interpreter PRIVATE SDL3::SDL3)
+target_link_libraries(chip8_interpreter PRIVATE chip8 SDL3::SDL3)

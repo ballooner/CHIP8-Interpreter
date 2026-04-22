@@ -2,13 +2,13 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
-#include <chip8.h>
+#include "chip8.h"
 
 #define WINDOW_WIDTH 	512
 #define WINDOW_HEIGHT 	256
 #define PIXEL_WIDTH 	(WINDOW_WIDTH / 64)
 #define PIXEL_HEIGHT	(WINDOW_HEIGHT / 64)
-#define FRAME_RATE		60
+#define FRAME_RATE		"60"
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
@@ -16,7 +16,7 @@ static SDL_Renderer *renderer = NULL;
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char* argv[])
 {
 	if (!SDL_CreateWindowAndRenderer("Hello World", WINDOW_WIDTH, WINDOW_HEIGHT,
-			   					    	NULL, &window, &renderer))
+			   					    	0, &window, &renderer))
 	{
 		SDL_Log("Couldn't create window and renderer: %s", SDL_GetError());
 		return SDL_APP_FAILURE;
@@ -27,7 +27,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char* argv[])
 		SDL_Log("Couldn't set callback rate: %s", SDL_GetError());
 	   	return SDL_APP_FAILURE;
 	}
-	init_emulator();
+	initEmulator(argv[1]);
 
 	return SDL_APP_CONTINUE;
 }

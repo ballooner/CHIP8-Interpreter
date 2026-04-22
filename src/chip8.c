@@ -1,3 +1,4 @@
+#include "chip8.h"
 #include <stdint.h>
 
 // CHIP8 DEFINES
@@ -11,17 +12,27 @@ static int16_t stack[16];
 uint8_t stackPointer = 0;
 uint16_t indexRegister;
 int8_t variableRegisters[16];
+uint8_t pc = INSTRUCTION_START;
 uint8_t delayTimer;
 uint8_t soundTimer;
 
 // Initialize everything needed for the emulator
-void initEmulator(void)
+int initEmulator(char* const romPath)
 {
-	load_font();
+	loadFont();
+	FILE* file;
+	if (!(file = fopen(romPath, "r")) && !loadProgram(file)) return -1;
+
+	return 0;
+}
+
+int loadProgram(FILE* romFile)
+{
+	return 0;
 }
 
 // Load the font starting at FONT_START and ending at FONT_END
-void load_font(void)
+void loadFont(void)
 {
 	uint8_t font_array[] = 
 	{
@@ -52,16 +63,16 @@ void load_font(void)
 }
 
 // Push a value to the stack
-// Return true if successfull and false otherwise
+// Return 0 if successful and -1 otherwise
 int8_t stackPush(uint16_t value)
 {
 	if (stackPointer < 15)
 	{
 		stack[stackPointer++] = value;
-		return true;
+		return 0;
 	}
 	
-	return false;
+	return -1;
 }
 
 // Pop and return a value from the stack
