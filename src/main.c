@@ -44,7 +44,18 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
-	
+	SDL_FRect pixel = {10, 10, 10, 10};
+
+	// Clear Screen
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+	SDL_RenderClear(renderer);
+
+	// Set color red and draw pixel
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+	SDL_RenderRect(renderer, &pixel);
+
+	// Draw Frame
+	SDL_RenderPresent(renderer);
 
     return SDL_APP_CONTINUE;
 }
