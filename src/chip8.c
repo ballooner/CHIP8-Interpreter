@@ -34,12 +34,8 @@ int loadProgram(char* const romPath)
 	FILE* rom;
 	if ((rom = fopen(romPath, "r")) == NULL) return -1;
 
-	unsigned char byte;
-	while (fread(&byte, 1, 1, rom) == 1)
-	{
-		printf("%02x\n", byte);
-	}
-
+	uint16_t i = 0;
+	while (fread(memory + INSTRUCTION_START + i++, 1, 1, rom) == 1);
 	fclose(rom);
 
 	return 0;
