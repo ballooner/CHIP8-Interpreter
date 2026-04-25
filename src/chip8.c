@@ -1,4 +1,6 @@
 #include "chip8.h"
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,6 +11,14 @@
 #define INSTRUCTION_START	0x200
 #define INSTRUCTION_RATE	700		// Execute x instructions per second
 #define INSTRUCTION_TIME	((double)(INSTRUCTION_RATE / 1000))
+
+// CHIP8 BITMASKS
+#define OPCODE_BITMASK		0xF000
+#define X_BITMASK			0x0F00
+#define Y_BITMASK			0x00F0
+#define N_BITMASK			0x000F
+#define NN_BITMASK			0x00FF
+#define NNN_BITMASK			0x0FFF
 
 // CHIP8 VARIABLES
 static int8_t memory[4096];
@@ -70,6 +80,55 @@ void loadFont(void)
 		memory[i] = font_array[i - FONT_START];
 		i++;
 	}
+}
+
+// Fetch the next instruction and return it
+uint16_t fetchInstruction(void)
+{
+	uint16_t instruction = memory[pc++] << 4;
+	instruction += memory[pc++];
+
+	return instruction;
+}
+
+// Decode and execute the provided instruction
+int decodeAndExecute(SDL_Renderer *renderer, uint16_t instruction)
+{
+	uint16_t opcode = instruction & OPCODE_BITMASK;
+	int8_t xReg;
+	int8_t yReg;
+
+	switch (opcode)
+	{
+	case (0x0000):
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+		SDL_RenderClear(renderer);
+		break;
+	case (0x1000):
+		pc = instruction & NNN_BITMASK;
+		break;
+	case (0x6000):
+		variableRegisters[(instruction & X_BITMASK) >> 8] 
+			= instruction & NN_BITMASK;
+		break;
+	case (0x7000):
+		variableRegisters[(instruction & X_BITMASK) >> 8]
+			+= instruction & NN_BITMASK;
+		break;
+	case (0xA000):
+		indexRegister = instruction & NNN_BITMASK;
+		break;
+	case (0xD000):
+		xReg = variableRegisters[(instruction & X_BITMASK) >> 8] % 64;
+		yReg = variableRegisters[(instruction & Y_BITMASK) >> 4] % 32;
+
+		break;
+	default:
+		printf("Instruction not found\n");
+		return 1;
+	}
+
+	return 0;
 }
 
 // Push a value to the stack

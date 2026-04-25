@@ -4,10 +4,8 @@
 #include <SDL3/SDL_main.h>
 #include "chip8.h"
 
-#define WINDOW_WIDTH 	512
-#define WINDOW_HEIGHT 	256
-#define PIXEL_WIDTH 	(WINDOW_WIDTH / 64)
-#define PIXEL_HEIGHT	(WINDOW_HEIGHT / 64)
+#define WINDOW_WIDTH 	64
+#define WINDOW_HEIGHT 	32
 #define FRAME_RATE		"60"
 
 static SDL_Window *window = NULL;
